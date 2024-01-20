@@ -13,6 +13,7 @@ import background from "./assets/sounds/background.mp3";
 function App() {
   const [backgroundSound] = useSound(background, {
     onEnd: () => backgroundSound(),
+    volume: 0.2,
   });
 
   backgroundSound();

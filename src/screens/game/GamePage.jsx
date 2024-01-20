@@ -5,6 +5,11 @@ import { Button, Dialog, DialogActions, DialogContent, DialogContentText, Dialog
 import colours from '../../UI/colours';
 import { Header1, Header5 } from '../../UI/text';
 import heart from '../../assets/heart.PNG';
+import useSound from "use-sound";
+import yay from "../../assets/sounds/yay.wav";
+import wrong_sound from "../../assets/sounds/wrong_sound.wav";
+import correct_sound from "../../assets/sounds/correct_sound.wav";
+import bubble from "../../assets/sounds/bubble.wav";
 
 const uniqueCardsArray = [
     {
@@ -51,16 +56,6 @@ const duplicateAndShuffleCards = () => {
 };
 
 
-
-// Function to shuffle the cards
-// function shuffleArray(array) {
-//     for (let i = array.length - 1; i > 0; i--) {
-//         const j = Math.floor(Math.random() * (i + 1));
-//         [array[i], array[j]] = [array[j], array[i]];
-//     }
-//     return array;
-// }
-
 function shuffleArray(array) {
     const length = array.length;
     for (let i = length; i > 0; i--) {
@@ -84,6 +79,19 @@ const GamePage = () => {
     );
     const [shouldDisableAllCards, setShouldDisableAllCards] = useState(false);
     const timeout = useRef(null);
+    const [yaySound] = useSound(yay, {
+        interrupt: false,
+    });
+    const [flipSound] = useSound(bubble, {
+        interrupt: false,
+    });
+    const [correctSound] = useSound(correct_sound, {
+        interrupt: false,
+        volume: 0.7,
+    });
+    const [wrongSound] = useSound(wrong_sound, {
+        interrupt: false,
+    });
 
     const disable = () => {
         setShouldDisableAllCards(true);
@@ -96,6 +104,7 @@ const GamePage = () => {
     const checkCompletion = () => {
         if (Object.keys(clearedCards).length === uniqueCardsArray.length) {
           setShowModal(true);
+          yaySound();
           const highScore = Math.min(moves, bestScore);
           setBestScore(highScore);
           localStorage.setItem("bestScore", highScore);
@@ -107,9 +116,11 @@ const GamePage = () => {
         enable();
         if (shuffledCards[firstIndex].type === shuffledCards[secondIndex].type) {
             setClearedCards((prev) => ({ ...prev, [shuffledCards[firstIndex].type]: true }));
+            correctSound();
             setOpenCards([]);
             return;
         }
+        wrongSound();
         // Flip the cards back after a delay
         timeout.current = setTimeout(() => {
             setOpenCards([]);
@@ -120,7 +131,7 @@ const GamePage = () => {
         if (openCards.includes(index)) {
             return; // Ignore the click if the same card is clicked again
         }
-    
+        flipSound();
         if (openCards.length === 1) {
             setOpenCards((prev) => [...prev, index]);
             setMoves((moves) => moves + 1);
@@ -161,7 +172,7 @@ const GamePage = () => {
 
     return (
         <Box className="game-container" sx={{bgcolor: colours.green}}>
-            <Header1 text="Memory Game" />
+            <Header1 text="SlothMind Shuffle" />
             <Header5 text="Match the cards to win the game" />
             <Box  sx={{bgcolor: colours.green}}>
            
@@ -189,8 +200,24 @@ const GamePage = () => {
                     </div>
                 )}
                 </div>
-                <div style={{padding: '15px'}}>
-                    <Button variant="contained" sx={{bgcolor: colours.orange, fontWeight:'bold'}} onClick={handleRestart}>Restart</Button>
+                <div style={{padding: '15px', display: "flex", flex:1, justifyContent: "center", alignItems:'center'}}>
+                    
+                    <Button
+                        variant="contained"
+                        sx={{
+                        position: "fixed",
+                        bottom: { xs: "25%", sm: "12%" },
+                        bgcolor: colours.pink,
+                        borderRadius: "30px",
+                        color: colours.black,
+                        border: "2px solid #000",
+                        paddingX: "20px",
+                        marginTop: "20px"
+                        }}
+                        onClick={handleRestart}
+                    >
+                        <Header5 text={"Sloth Restart!"} />
+                    </Button>
                 </div>
             </footer>
             <Dialog

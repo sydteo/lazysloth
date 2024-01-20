@@ -5,6 +5,7 @@ Welcome to the LazySloth App! This delightful application is designed for those 
 <p align="center">
 <img src="https://github.com/sydteo/lazysloth/assets/71167004/8bf2dfca-4574-4129-9c03-3187fce1ceae" width="200" height="auto">
 </p>
+
 ## Features
 
 - **Feed the Sloth:** Engage in a soothing activity where you can feed our adorable sloth.
