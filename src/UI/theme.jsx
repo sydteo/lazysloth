@@ -30,6 +30,15 @@ const theme = createTheme({
         },
       },
     },
+    MuiBottomNavigation: {
+      styleOverrides: {
+        root: {
+          "&.Mui-selected": {
+            background: colours.pink,
+          },
+        },
+      },
+    },
   },
 });
 
