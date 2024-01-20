@@ -1,34 +1,37 @@
 import { FormatQuote, Home, SportsEsports } from "@mui/icons-material";
 import { BottomNavigation, BottomNavigationAction, Box } from "@mui/material";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import colours from "../../UI/colours";
 
 const navigationData = [
   {
     label: "Home",
-    value: "home",
+    value: "/home",
     to: "/home",
     icon: <Home />,
   },
   {
     label: "Quotes",
-    value: "quotes",
+    value: "/quotes",
     to: "/quotes",
     icon: <FormatQuote />,
   },
   {
     label: "Games",
-    value: "games",
+    value: "/games",
     to: "/games",
     icon: <SportsEsports />,
   },
 ];
 
 const BottomNav = () => {
-  const [value, setValue] = useState("home");
+  const location = useLocation();
+  const currentpath = location.pathname;
+  const [path, setPath] = useState(currentpath);
+
   const handleChange = (event, newValue) => {
-    setValue(newValue);
+    setPath(newValue);
   };
 
   return (
@@ -43,7 +46,7 @@ const BottomNav = () => {
     >
       <BottomNavigation
         showLabels
-        value={value}
+        value={path}
         onChange={handleChange}
         sx={{
           bgcolor: colours.orange,
