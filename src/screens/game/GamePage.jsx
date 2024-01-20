@@ -1,9 +1,9 @@
 import React, {useState, useEffect, useRef} from 'react';
 import Card from './Card';
 import './Card.css';
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Box } from '@mui/material';
 import colours from '../../UI/colours';
-import { Header1 } from '../../UI/text';
+import { Header1, Header5 } from '../../UI/text';
 
 const uniqueCardsArray = [
     {
@@ -155,14 +155,12 @@ const GamePage = () => {
       };
 
     return (
-        <div className="game-container">
-            <header sx={{Text: Header1}}>
-                <h3>Play the Flip card game</h3>
-                <div style={{padding: '15px'}}>
-                    Select two cards with same content consequtively to make them vanish
-                </div>
-            </header>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gridGap: '10px' }}>
+        <Box className="game-container" sx={{bgcolor: colours.green}}>
+            <Header1 text="Memory Game" />
+            <Header5 text="Match the cards to win the game" />
+            <Box  sx={{bgcolor: colours.green}}>
+           
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gridGap: '10px', marginTop: "20px" }}>
                 {shuffledCards.map((card, index) => (
                     <Card
                         key={index}
@@ -212,8 +210,8 @@ const GamePage = () => {
                 </Button>
                 </DialogActions>
             </Dialog>
-            
-        </div>
+            </Box>
+        </Box>
 
     );
 };
