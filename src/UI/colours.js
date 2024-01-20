@@ -3,6 +3,7 @@ const colours = {
   pink: "#FFB996",
   orange: "#FFCF81",
   yellow: "#FDFFAB",
+  black: "#000",
 };
 
 export default colours;
