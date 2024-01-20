@@ -1,27 +1,27 @@
-import logo from "./logo.svg";
 import "./App.css";
-import GamePage from "./screens/game/GamePage.jsx";
+import HomePage from "./screens/home/HomePage";
+import GamePage from "./screens/game/GamePage";
+import { ThemeProvider } from "@emotion/react";
+import theme from "./UI/theme";
+import QuotePage from "./screens/quote/QuotePage";
+import BottomNav from "./screens/bottomnav/BottomNav";
+import { Route, BrowserRouter, Routes } from "react-router-dom";
+import { Box } from "@mui/material";
 
 function App() {
   return (
-    <div className="App">
-      {/* <header className="App-header"> */}
-      <GamePage />
-      {/* <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a> */}
-      {/* </header> */}
-    </div>
+    <Box sx={{ height: "100vh" }}>
+      <ThemeProvider theme={theme}>
+        <BrowserRouter>
+          <Routes>
+            <Route exact path="/home" element={<HomePage />} />
+            <Route exact path="/quotes" element={<QuotePage />} />
+            <Route exact path="/games" element={<GamePage />} />
+          </Routes>
+          <BottomNav />
+        </BrowserRouter>
+      </ThemeProvider>
+    </Box>
   );
 }
 
