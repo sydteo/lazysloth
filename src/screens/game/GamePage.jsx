@@ -165,7 +165,7 @@ const GamePage = () => {
             <Header5 text="Match the cards to win the game" />
             <Box  sx={{bgcolor: colours.green}}>
            
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gridGap: '10px', marginTop: "20px" }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gridGap: '5px', marginTop: "20px" }}>
                 {shuffledCards.map((card, index) => (
                     <Card
                         key={index}
