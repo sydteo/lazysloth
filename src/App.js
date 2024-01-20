@@ -7,8 +7,15 @@ import QuotePage from "./screens/quote/QuotePage";
 import BottomNav from "./screens/bottomnav/BottomNav";
 import { Route, BrowserRouter, Routes } from "react-router-dom";
 import { Box } from "@mui/material";
+import useSound from "use-sound";
+import background from "./assets/sounds/background.mp3";
 
 function App() {
+  const [backgroundSound] = useSound(background, {
+    onEnd: () => backgroundSound(),
+  });
+
+  backgroundSound();
   return (
     <Box sx={{ height: "100vh" }}>
       <ThemeProvider theme={theme}>
