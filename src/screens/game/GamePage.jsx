@@ -128,7 +128,7 @@ const GamePage = () => {
     };
 
     const handleCardClick = (index) => {
-        if (openCards.includes(index)) {
+        if (openCards.includes(index) || clearedCards[shuffledCards[index].type]) {
             return; // Ignore the click if the same card is clicked again
         }
         flipSound();
