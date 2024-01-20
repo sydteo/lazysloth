@@ -24,13 +24,14 @@ const HomePage = () => {
         flex: 1,
         alignItems: "center",
         flexDirection: "column",
+        textAlign: "center",
       }}
     >
       <Header1 text="Welcome to Lazy Sloth" />
       <img
         src={isToggle ? sleep : eat}
         alt="Logo"
-        style={{ height: "60%", padding: "20px" }}
+        style={{ height: "50%", padding: "20px", objectFit: "contain" }}
       />
       <Button
         variant="contained"
@@ -40,6 +41,7 @@ const HomePage = () => {
           color: colours.black,
           border: "2px solid #000",
           paddingX: "20px",
+          margin: 0,
         }}
         onClick={handleToggle}
       >
