@@ -2,7 +2,7 @@ import { Box, Button } from "@mui/material";
 import React, { useState } from "react";
 import useSound from "use-sound";
 import colours from "../../UI/colours";
-import { Header1, Header2 } from "../../UI/text";
+import { Header1, Header5 } from "../../UI/text";
 
 import eat from "../../assets/eat.PNG";
 import sleep from "../../assets/sleep.PNG";
@@ -62,7 +62,7 @@ const HomePage = () => {
         }}
         onClick={handleToggle}
       >
-        <Header2 text={isToggle ? "Feed" : "Sleep"} />
+        <Header5 text={isToggle ? "Feed" : "Sleep"} />
       </Button>
     </Box>
   );
