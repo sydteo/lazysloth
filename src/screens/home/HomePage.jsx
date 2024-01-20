@@ -62,7 +62,7 @@ const HomePage = () => {
         }}
         onClick={handleToggle}
       >
-        <Header5 text={isToggle ? "Feed" : "Sleep"} />
+        <Header5 text={isToggle ? "Munch" : "Snooze"} />
       </Button>
     </Box>
   );
