@@ -31,7 +31,7 @@ const HomePage = () => {
       <img
         src={isToggle ? sleep : eat}
         alt="Logo"
-        style={{ height: "50%", padding: "20px", objectFit: "contain" }}
+        style={{ height: "50%", paddingX: "20px", objectFit: "contain" }}
       />
       <Button
         variant="contained"
@@ -41,7 +41,7 @@ const HomePage = () => {
           color: colours.black,
           border: "2px solid #000",
           paddingX: "20px",
-          margin: 0,
+          marginTop: "20px",
         }}
         onClick={handleToggle}
       >
