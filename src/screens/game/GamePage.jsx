@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useRef} from 'react';
 import Card from './Card';
 import './Card.css';
-import { Button } from '@mui/material';
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
 import colours from '../../UI/colours';
 import { Header1 } from '../../UI/text';
 
@@ -76,6 +76,11 @@ const GamePage = () => {
     const [shuffledCards, setShuffledCards] = useState(duplicateAndShuffleCards());
     const [openCards, setOpenCards] = useState([]);
     const [clearedCards, setClearedCards] = useState({});
+    const [moves, setMoves] = useState(0);
+    const [showModal, setShowModal] = useState(false);
+    const [bestScore, setBestScore] = useState(
+        JSON.parse(localStorage.getItem("bestScore")) || Number.POSITIVE_INFINITY
+    );
     const [shouldDisableAllCards, setShouldDisableAllCards] = useState(false);
     const timeout = useRef(null);
 
@@ -86,6 +91,15 @@ const GamePage = () => {
     const enable = () => {
         setShouldDisableAllCards(false);
     };
+
+    const checkCompletion = () => {
+        if (Object.keys(clearedCards).length === uniqueCardsArray.length) {
+          setShowModal(true);
+          const highScore = Math.min(moves, bestScore);
+          setBestScore(highScore);
+          localStorage.setItem("bestScore", highScore);
+        }
+      };
 
     const evaluate = () => {
         const [firstIndex, secondIndex] = openCards;
@@ -104,8 +118,10 @@ const GamePage = () => {
     const handleCardClick = (index) => {
         if (openCards.length === 1) {
             setOpenCards((prev) => [...prev, index]);
+            setMoves((moves) => moves + 1);
             disable();
         } else {
+            clearTimeout(timeout.current);
             setOpenCards([index]);
         }
     };
@@ -121,15 +137,18 @@ const GamePage = () => {
     }, [openCards]);
 
     useEffect(() => {
-        return () => {
-            clearTimeout(timeout.current);
-        };
-    }, []);
+        checkCompletion();
+      }, [clearedCards]);
+
+    const checkIsInactive = (card) => {
+        return Boolean(clearedCards[card.type]);
+    };
 
     const handleRestart = () => {
         setClearedCards({});
         setOpenCards([]);
-       
+        setShowModal(false);
+        setMoves(0);
         setShouldDisableAllCards(false);
         // set a shuffled deck of cards
         setShuffledCards(duplicateAndShuffleCards());
@@ -139,6 +158,9 @@ const GamePage = () => {
         <div className="game-container">
             <header sx={{Text: Header1}}>
                 <h3>Play the Flip card game</h3>
+                <div style={{padding: '15px'}}>
+                    Select two cards with same content consequtively to make them vanish
+                </div>
             </header>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gridGap: '10px' }}>
                 {shuffledCards.map((card, index) => (
@@ -146,52 +168,54 @@ const GamePage = () => {
                         key={index}
                         type={card.type}
                         image={card.image}
+                        isInactive={checkIsInactive(card)}
                         isFlipped={openCards.includes(index) || clearedCards[card.type]}
                         onClick={() => handleCardClick(index)}
                         isDisabled={shouldDisableAllCards}
                     />
                 ))}
             </div>
-            <div style={{padding: '15px'}}>
-                <Button variant="contained" sx={{bgcolor: colours.orange}} onClick={handleRestart}>Restart</Button>
-            </div>
+            <footer>
+                <div className="score">
+                    <div className="moves" style={{padding: '15px'}}>
+                        <span className="bold">Moves:</span> {moves}
+                    </div>
+                {localStorage.getItem("bestScore") && (
+                    <div className="high-score">
+                        <span className="bold">Best Score:</span> {bestScore}
+                    </div>
+                )}
+                </div>
+                <div style={{padding: '15px'}}>
+                    <Button variant="contained" sx={{bgcolor: colours.orange}} onClick={handleRestart}>Restart</Button>
+                </div>
+            </footer>
+            <Dialog
+                open={showModal}
+                disableBackdropClick
+                disableEscapeKeyDown
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+            >
+                <DialogTitle id="alert-dialog-title">
+                Hurray!!! You completed the challenge
+                </DialogTitle>
+                <DialogContent>
+                <DialogContentText id="alert-dialog-description">
+                    You completed the game in {moves} moves. Your best score is{" "}
+                    {bestScore} moves.
+                </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                <Button onClick={handleRestart} color="primary">
+                    Restart
+                </Button>
+                </DialogActions>
+            </Dialog>
+            
         </div>
 
     );
 };
-//     const [flippedCards, setFlippedCards] = useState([]);
-    
-//     const handleCardClick = (type) => {
-//         if (flippedCards.length < 2) {
-//             setFlippedCards([...flippedCards, type]);
-//         }
-
-//         // Add logic here to check for a match if 2 cards are flipped
-//     };
-
-//     return(
-//         <div className="game-container">
-//             <header>
-//             <h3>Play the Flip card game</h3>
-//             <div>
-//                 Select two cards with same content consequtively to make them vanish
-//             </div>
-//         </header>
-//         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gridGap: '10px' }}>
-//                 {shuffledCards.map((card, index) => (
-//                     <Card
-//                         key={index}
-//                         type={card.type}
-//                         image={card.image}
-//                         isFlipped={flippedCards.includes(card.type)}
-//                         onClick={() => handleCardClick(card.type)}
-//                 />
-//                 ))}
-//             </div>
-//         </div>
-        
-    
-//     )
-// }
 
 export default GamePage;
