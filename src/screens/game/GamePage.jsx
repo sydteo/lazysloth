@@ -150,10 +150,12 @@ const GamePage = () => {
         return () => {
             clearTimeout(timeout);
         };
-    }, [openCards]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [ openCards]);
 
     useEffect(() => {
         checkCompletion();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       }, [clearedCards]);
 
     const checkIsInactive = (card) => {
