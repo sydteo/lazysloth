@@ -1,16 +1,33 @@
 import { Box, Button } from "@mui/material";
 import React, { useState } from "react";
-
+import useSound from "use-sound";
 import colours from "../../UI/colours";
 import { Header1, Header2 } from "../../UI/text";
 
 import eat from "../../assets/eat.PNG";
 import sleep from "../../assets/sleep.PNG";
 
+import munchSound from "../../assets/sounds/munchFinal.wav";
+import snoreSound from "../../assets/sounds/snoreFinal.wav";
+
 const HomePage = () => {
   const [isToggle, setToggle] = useState(false);
 
+  const [munch, munchStop] = useSound(munchSound, {
+    interrupt: false,
+  });
+  const [snore, snoreStop] = useSound(snoreSound, {
+    interrupt: false,
+  });
+
   const handleToggle = () => {
+    if (isToggle) {
+      snoreStop.stop();
+      munch();
+    } else {
+      munchStop.stop();
+      snore();
+    }
     setToggle(!isToggle);
   };
 
