@@ -32,9 +32,9 @@ const Quote = ({ text, colour }) => {
         width: { xs: "80%", sm: "80vh" },
         minWidth: { xs: "80%", sm: "80vh" },
         maxWidth: { xs: "80%", sm: "80vh" },
-        minHeight: "70px",
-        height: "70px",
-        maxHeight: "70px",
+        minHeight: "50px",
+        height: "50px",
+        maxHeight: "50px",
         borderRadius: "30px",
         color: colours.black,
         border: "2px solid #000",
@@ -112,7 +112,7 @@ const QuotePage = () => {
         variant="contained"
         sx={{
           position: "fixed",
-          bottom: { xs: "25%", sm: "12%" },
+          bottom: { xs: "15%", sm: "12%" },
           bgcolor: colours.pink,
           borderRadius: "30px",
           color: colours.black,
