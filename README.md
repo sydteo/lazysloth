@@ -1,7 +1,8 @@
 # LazySloth App
 
 Welcome to the LazySloth App! This delightful application is designed for those who embrace the laid-back, carefree spirit of a sloth. Perfect for days when you want to indulge in a bit of procrastination or need a light-hearted break, LazySloth offers a variety of features to help you relax and smile.
-<img src="https://github.com/sydteo/lazysloth/assets/71167004/8bf2dfca-4574-4129-9c03-3187fce1ceae" width="200">
+
+<img src="https://github.com/sydteo/lazysloth/assets/71167004/8bf2dfca-4574-4129-9c03-3187fce1ceae" width="200" height="auto">
 
 ## Features
 
