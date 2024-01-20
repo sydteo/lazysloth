@@ -7,7 +7,7 @@ Welcome to the LazySloth App! This delightful application is designed for those 
 - **Feed the Sloth:** Engage in a soothing activity where you can feed our adorable sloth.
 - **Sloth Quotes:** Get inspired by a collection of quotes that celebrate the art of procrastination and taking it easy.
 - **Mini-Games:** Enjoy a selection of mini-games designed to be fun, casual, and perfect for a slothful day.
-- **Hand-Drawn Assets:** All assets in LazySloth are lovingly hand-drawn by our talented team, adding a personal touch to your experience.
+- **Hand-Drawn Assets:** All assets in LazySloth are lovingly hand-drawn by Sharmaine, adding a personal touch to your experience.
 
 ## Built With
 
@@ -45,5 +45,5 @@ Ensure you have the latest version of [Node.js](https://nodejs.org/) installed, 
 
 ## Authors
 
-- **[Sydney Teo]**
-- **[Sharmaine Teo]**
+- **Sydney Teo**
+- **Sharmaine Teo**
