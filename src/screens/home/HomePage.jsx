@@ -53,6 +53,8 @@ const HomePage = () => {
       <Button
         variant="contained"
         sx={{
+          position: "fixed",
+          bottom: { xs: "25%", sm: "12%" },
           bgcolor: colours.pink,
           borderRadius: "30px",
           color: colours.black,
