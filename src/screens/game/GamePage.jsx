@@ -4,6 +4,7 @@ import './Card.css';
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Box } from '@mui/material';
 import colours from '../../UI/colours';
 import { Header1, Header5 } from '../../UI/text';
+import heart from '../../assets/heart.PNG';
 
 const uniqueCardsArray = [
     {
@@ -116,6 +117,10 @@ const GamePage = () => {
     };
 
     const handleCardClick = (index) => {
+        if (openCards.includes(index)) {
+            return; // Ignore the click if the same card is clicked again
+        }
+    
         if (openCards.length === 1) {
             setOpenCards((prev) => [...prev, index]);
             setMoves((moves) => moves + 1);
@@ -160,7 +165,7 @@ const GamePage = () => {
             <Header5 text="Match the cards to win the game" />
             <Box  sx={{bgcolor: colours.green}}>
            
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gridGap: '10px', marginTop: "20px" }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gridGap: '5px', marginTop: "20px" }}>
                 {shuffledCards.map((card, index) => (
                     <Card
                         key={index}
@@ -174,18 +179,18 @@ const GamePage = () => {
                 ))}
             </div>
             <footer>
-                <div className="score">
-                    <div className="moves" style={{padding: '15px'}}>
-                        <span className="bold">Moves:</span> {moves}
+                <div className="score" style={{ fontWeight: 'bold' }}> 
+                    <div style={{padding: '15px'}}>
+                        <span>Moves:</span> {moves}
                     </div>
                 {localStorage.getItem("bestScore") && (
-                    <div className="high-score">
-                        <span className="bold">Best Score:</span> {bestScore}
+                    <div style={{ fontWeight: 'bold' }}>
+                        <span>Best Score:</span> {bestScore}
                     </div>
                 )}
                 </div>
                 <div style={{padding: '15px'}}>
-                    <Button variant="contained" sx={{bgcolor: colours.orange}} onClick={handleRestart}>Restart</Button>
+                    <Button variant="contained" sx={{bgcolor: colours.orange, fontWeight:'bold'}} onClick={handleRestart}>Restart</Button>
                 </div>
             </footer>
             <Dialog
@@ -195,17 +200,19 @@ const GamePage = () => {
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"
             >
-                <DialogTitle id="alert-dialog-title">
-                Hurray!!! You completed the challenge
+                <DialogTitle id="alert-dialog-title" textAlign={'center'}>
+                    Slothbravo! <br />You completed the challenge
                 </DialogTitle>
                 <DialogContent>
-                <DialogContentText id="alert-dialog-description">
-                    You completed the game in {moves} moves. Your best score is{" "}
-                    {bestScore} moves.
-                </DialogContentText>
+                    <DialogContentText id="alert-dialog-description" textAlign={'center'} paddingBottom={'10px'}>
+                        You completed the game in {moves} moves. <br />Your best score is{" "}
+                        {bestScore} moves.
+                    </DialogContentText>
+                    <img src={heart} alt="heart" style={{height: '200px', objectFit:"contain"}} />
                 </DialogContent>
-                <DialogActions>
-                <Button onClick={handleRestart} color="primary">
+
+                <DialogActions style={{ justifyContent: 'center' }}>
+                <Button onClick={handleRestart} sx={{color:colours.black}}>
                     Restart
                 </Button>
                 </DialogActions>
