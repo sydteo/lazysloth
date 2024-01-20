@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+# LazySloth App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the LazySloth App! This delightful application is designed for those who embrace the laid-back, carefree spirit of a sloth. Perfect for days when you want to indulge in a bit of procrastination or need a light-hearted break, LazySloth offers a variety of features to help you relax and smile.
 
-## Available Scripts
+<p align="center">
+<img src="https://github.com/sydteo/lazysloth/assets/71167004/8bf2dfca-4574-4129-9c03-3187fce1ceae" width="200" height="auto">
+</p>
+## Features
 
-In the project directory, you can run:
+- **Feed the Sloth:** Engage in a soothing activity where you can feed our adorable sloth.
+- **Sloth Quotes:** Get inspired by a collection of quotes that celebrate the art of procrastination and taking it easy.
+- **Mini-Games:** Enjoy a selection of mini-games designed to be fun, casual, and perfect for a slothful day.
+- **Hand-Drawn Assets:** All sloth assets in LazySloth are lovingly hand-drawn by Sharmaine, adding a personal touch to your experience.
 
-### `npm start`
+## Built With
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **React:** This app is built using React, showcasing interactive UIs with efficient updates and rendering.
+- **Custom Artwork:** Every graphic and interface element is uniquely designed by our team, providing a one-of-a-kind user experience.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Getting Started
 
-### `npm test`
+To get a local copy up and running, follow these simple steps.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Prerequisites
 
-### `npm run build`
+Ensure you have the latest version of [Node.js](https://nodejs.org/) installed, as it includes `npm`, which is necessary to install dependencies and run the application.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Installation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. **Clone the Repository**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   ```sh
+   git clone https://github.com/your_username_/LazySloth.git
 
-### `npm run eject`
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+2. **Install NPM Packages**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   ```sh
+   npm install
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+3. **Start the application**
+   ```sh
+   npm start
+   ```
 
-## Learn More
+## Authors
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **Sydney**
+- **Sharmaine**
