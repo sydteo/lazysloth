@@ -1,7 +1,7 @@
 import { Box, Button } from "@mui/material";
-import { Header1, Header2, Header5 } from "../../UI/text";
+import { Header1, Header5 } from "../../UI/text";
 import colours from "../../UI/colours";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useSound from "use-sound";
 import gumball from "../../assets/sounds/gumball.wav";
 
@@ -29,7 +29,10 @@ const Quote = ({ text, colour }) => {
         bgcolor: colour,
         display: "flex",
         flex: 1,
-        width: "80%",
+        width: { xs: "80%", sm: "80vh" },
+        minWidth: { xs: "80%", sm: "80vh" },
+        maxWidth: { xs: "80%", sm: "80vh" },
+        minHeight: "70px",
         height: "70px",
         maxHeight: "70px",
         borderRadius: "30px",
@@ -47,12 +50,34 @@ const Quote = ({ text, colour }) => {
 };
 const QuotePage = () => {
   const [selectedQuotes, setSelectedQuotes] = useState(quotes.slice(0, 4));
+  const [visibleQuotes, setVisibleQuotes] = useState(quotes.slice(0, 4));
+  const [gumballSound] = useSound(gumball, {
+    interrupt: false,
+  });
 
   const handleChange = () => {
+    setVisibleQuotes([]);
+    gumballSound();
     const shuffled = quotes.sort(() => 0.5 - Math.random());
     let selected = shuffled.slice(0, 4);
     setSelectedQuotes(selected);
   };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (selectedQuotes.length > visibleQuotes.length) {
+        setVisibleQuotes((prevVisibleQuotes) => [
+          ...prevVisibleQuotes,
+          selectedQuotes[prevVisibleQuotes.length],
+        ]);
+      } else {
+        clearInterval(interval);
+      }
+    }, 250);
+
+    // Clear the interval on component unmount
+    return () => clearInterval(interval);
+  }, [selectedQuotes, visibleQuotes]);
 
   return (
     <Box
@@ -68,16 +93,26 @@ const QuotePage = () => {
       }}
     >
       <Header1 text="Quotes" />
-      {selectedQuotes.map((text, index) => (
-        <Quote
-          key={text}
-          text={text}
-          colour={index % 2 === 0 ? colours.pink : colours.orange}
-        />
-      ))}
+      <Box
+        display="flex"
+        flex={0.6}
+        flexDirection="column"
+        height="70%"
+        alignItems={"center"}
+      >
+        {visibleQuotes.map((text, index) => (
+          <Quote
+            key={text}
+            text={text}
+            colour={index % 2 === 0 ? colours.pink : colours.orange}
+          />
+        ))}
+      </Box>
       <Button
         variant="contained"
         sx={{
+          position: "fixed",
+          bottom: { xs: "25%", sm: "12%" },
           bgcolor: colours.pink,
           borderRadius: "30px",
           color: colours.black,
@@ -87,7 +122,7 @@ const QuotePage = () => {
         }}
         onClick={handleChange}
       >
-        <Header2 text={"Sloth it!"} />
+        <Header5 text={"Sloth it!"} />
       </Button>
     </Box>
   );
