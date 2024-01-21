@@ -30,7 +30,7 @@ const uniqueCardsArray = [
   },
   {
     type: "fox",
-    image: require(`../../assets/memoryGame/fox.png`),
+    image: require(`../../assets/memoryGame/tinyfox.png`),
   },
   {
     type: "lion",
@@ -101,6 +101,9 @@ const GamePage = () => {
   );
   const [shouldDisableAllCards, setShouldDisableAllCards] = useState(false);
   const timeout = useRef(null);
+  const [isEvaluating, setIsEvaluating] = useState(false);
+
+
   const [yaySound] = useSound(yay, {
     interrupt: false,
   });
@@ -143,17 +146,19 @@ const GamePage = () => {
       }));
       correctSound();
       setOpenCards([]);
+      setIsEvaluating(false); 
       return;
     }
     wrongSound();
     // Flip the cards back after a delay
     timeout.current = setTimeout(() => {
       setOpenCards([]);
+      setIsEvaluating(false); 
     }, 500);
   };
 
   const handleCardClick = (index) => {
-    if (openCards.includes(index) || clearedCards[shuffledCards[index].type]) {
+    if (openCards.includes(index) || clearedCards[shuffledCards[index].type] || isEvaluating) {
       return; // Ignore the click if the same card is clicked again
     }
     flipSound();
@@ -161,6 +166,7 @@ const GamePage = () => {
       setOpenCards((prev) => [...prev, index]);
       setMoves((moves) => moves + 1);
       disable();
+      setIsEvaluating(true);
     } else {
       clearTimeout(timeout.current);
       setOpenCards([index]);
@@ -229,7 +235,7 @@ const GamePage = () => {
             </div>
             {localStorage.getItem("bestScore") && (
               <div style={{ fontWeight: "bold" }}>
-                <span>Best Score:</span> {bestScore}
+                <span>Best Score:</span> {bestScore===Number.POSITIVE_INFINITY ? "🦥" : bestScore}
               </div>
             )}
           </div>
