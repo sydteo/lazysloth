@@ -259,7 +259,6 @@ const GamePage = () => {
                 border: "2px solid #000",
                 paddingX: "20px",
                 marginTop: "20px",
-                marginBottom: "56px",
               }}
               onClick={handleRestart}
             >

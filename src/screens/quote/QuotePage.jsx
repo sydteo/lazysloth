@@ -97,7 +97,6 @@ const QuotePage = () => {
         display="flex"
         flex={0.6}
         flexDirection="column"
-        height="70%"
         alignItems={"center"}
       >
         {visibleQuotes.map((text, index) => (
@@ -119,7 +118,6 @@ const QuotePage = () => {
           border: "2px solid #000",
           paddingX: "20px",
           marginTop: "20px",
-          marginBottom: "56px",
         }}
         onClick={handleChange}
       >

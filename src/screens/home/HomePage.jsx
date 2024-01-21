@@ -44,11 +44,16 @@ const HomePage = () => {
         textAlign: "center",
       }}
     >
-      <Header1 text="Welcome to Lazy Sloth" />
+      <Header1 text="Welcome to" />
+      <Header1 text="Lazy Sloth" />
       <img
         src={isToggle ? sleep : eat}
         alt="Logo"
-        style={{ height: "50%", paddingX: "20px", objectFit: "contain" }}
+        style={{
+          height: "60%",
+          paddingX: "20px",
+          objectFit: "contain",
+        }}
       />
       <Button
         variant="contained"
@@ -61,7 +66,6 @@ const HomePage = () => {
           border: "2px solid #000",
           paddingX: "20px",
           marginTop: "20px",
-          marginBottom: "56px",
         }}
         onClick={handleToggle}
       >
