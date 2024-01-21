@@ -22,11 +22,11 @@ import bubble from "../../assets/sounds/bubble.wav";
 const uniqueCardsArray = [
   {
     type: "bear",
-    image: require(`../../assets/memoryGame/bear.png`),
+    image: require(`../../assets/memoryGame/tinybear.png`),
   },
   {
     type: "raccoon",
-    image: require(`../../assets/memoryGame/racoon.png`),
+    image: require(`../../assets/memoryGame/tinyracoon.png`),
   },
   {
     type: "fox",
@@ -34,23 +34,23 @@ const uniqueCardsArray = [
   },
   {
     type: "lion",
-    image: require(`../../assets/memoryGame/lion.png`),
+    image: require(`../../assets/memoryGame/tinylion.png`),
   },
   {
     type: "panda",
-    image: require(`../../assets/memoryGame/panda.png`),
+    image: require(`../../assets/memoryGame/tinypanda.png`),
   },
   {
     type: "rabbit",
-    image: require(`../../assets/memoryGame/rabbit.png`),
+    image: require(`../../assets/memoryGame/tinyrabbit.png`),
   },
   {
     type: "reindeer",
-    image: require(`../../assets/memoryGame/reindeer.png`),
+    image: require(`../../assets/memoryGame/tinyreindeer.png`),
   },
   {
     type: "penguin",
-    image: require(`../../assets/memoryGame/penguin.png`),
+    image: require(`../../assets/memoryGame/tinypenguin.png`),
   },
 ];
 
