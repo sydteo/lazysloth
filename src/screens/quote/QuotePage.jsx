@@ -111,14 +111,15 @@ const QuotePage = () => {
       <Button
         variant="contained"
         sx={{
-          position: "fixed",
-          bottom: { xs: "15%", sm: "12%" },
+          position: "sticky",
+          bottom: "12%",
           bgcolor: colours.pink,
           borderRadius: "30px",
           color: colours.black,
           border: "2px solid #000",
           paddingX: "20px",
           marginTop: "20px",
+          marginBottom: "56px",
         }}
         onClick={handleChange}
       >
